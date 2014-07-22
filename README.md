@@ -1,4 +1,4 @@
 vim-zeshy
 =========
 
-Vim plugin for zeshy, a high-level shell scripting language implemented and interpreted in pure zsh.
+[Vim](http://vim.org) plugin for [zeshy](http://github.com/leycec/zeshy), a **high-level shell scripting language** both implemented *and* interpreted in pure [zsh](http://zsh.org).

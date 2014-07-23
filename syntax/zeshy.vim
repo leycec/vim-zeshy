@@ -1,9 +1,8 @@
 " Vim syntax file
 " Language:       zeshy
 " Maintainer:     Cecil Curry <leycec@gmail.com>
-" Filenames:      *.zeshy
 " Latest Change:  2014-08-01
-" Version:        1
+" Filenames:      *.zeshy
 
 "FIXME: vim's official shell script syntax highlighting (i.e., "syntax/sh.vim")
 "is much more reliable, extensive, documented, frequently updated, and
@@ -14,8 +13,8 @@
 "older vim versions, folding support, custom mode-specific global variables).
 
 " ....................{ PREAMBLE                           }....................
-" If syntax highlighting has already been defined for the current buffer,
-" silently return.
+" If syntax highlighting has already been loaded for the current buffer,
+" return.
 if exists("b:current_syntax")
     finish
 endif
@@ -38,7 +37,7 @@ syn cluster zyMath contains=zshNumber,zshParentheses,@zshSubst,@zshDerefs
 
 " ....................{ REGIONS                            }....................
 syn region zyMathTest matchgroup=zyMathDelimiter contains=@zyMath
-            \ start="((" skip=+\\\\\|\\$+ end="))"
+  \ start="((" skip=+\\\\\|\\$+ end="))"
 
 " ....................{ HIGHLIGHT GROUPS                   }....................
 " Map all mode-specific match groups defined above to mode-agnostic highlight

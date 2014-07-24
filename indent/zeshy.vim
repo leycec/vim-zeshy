@@ -6,7 +6,7 @@
 " ....................{ PREAMBLE                           }....................
 " If such plugin has already been loaded for the current buffer, return. Since
 " dependencies below set such variable, test such variable *BEFORE* loading
-" dependencies. 
+" dependencies.
 if exists("b:did_indent")
     finish
 endif
@@ -19,28 +19,12 @@ endif
 " Since "indent/zsh.vim" currently simply defers to "sh.vim", we do so as well.
 runtime! indent/sh.vim
 
-" ....................{ HELPERS                            }....................
-" int s:get_shiftwidth_halved(void)
-"
-" Get the "shiftwidth" for the current buffer halved, rounded down to the
-" nearest integer. Since Vim prohibits arbitrary code when initializing
-" dictionaries, wrap such operation in a helper function.
-function s:get_shiftwidth_halved()
-    return &shiftwidth / 2
-endfunction
-
-" ....................{ OPTIONS                            }....................
-" Adjust default shell indentation in favor of the conventional zeshy style.
-" Specifically, indent:
-"
-" * "\"-suffixed continuation lines by half of the current "shiftwidth",
-"   rounding down to the nearest integer.
-"
-" For such global's documentation, see section "SHELL" at:
-"     http://vimdoc.sourceforge.net/htmldoc/indent.html
-let b:sh_indent_options = {
-  \ 'continuation-line': function('s:get_shiftwidth_halved'),
-  \ }
+" If the principal indentation function defined below has already been defined,
+" return. Test such condition *AFTER* loading dependencies above, ensuring that
+" all functions such functions calls (e.g., GetShIndent()) are also defined.
+if exists("*ZyGetLineCurrentIndentation")
+    finish
+endif
 
 " ....................{ INDENTATION                        }....................
 " Autoindent lines according to the following function.
@@ -86,6 +70,29 @@ endfunction
 " See "LICENSE" for additional details.
 "
 " --------------------( WASTELANDS                         )--------------------
+" ....................{ HELPERS                            }....................
+" int s:get_shiftwidth_halved(void)
+"
+" Get the "shiftwidth" for the current buffer halved, rounded down to the
+" nearest integer. Since Vim prohibits arbitrary code when initializing
+" dictionaries, wrap such operation in a helper function.
+" function! s:get_shiftwidth_halved()
+"     return &shiftwidth / 2
+" endfunction
+
+" ....................{ OPTIONS                            }....................
+" Adjust default shell indentation in favor of the conventional zeshy style.
+" Specifically, indent:
+"
+" * "\"-suffixed continuation lines by half of the current "shiftwidth",
+"   rounding down to the nearest integer.
+"
+" For such global's documentation, see section "SHELL" at:
+"     http://vimdoc.sourceforge.net/htmldoc/indent.html
+" let b:sh_indent_options = {
+"   \ 'continuation-line': function('s:get_shiftwidth_halved'),
+"   \ }
+
 " ....................{ POSTAMBLE                          }....................
 " Restore prior settings on unloading such plugin. Since dependencies already
 " define such variable, append rather than set such variable.

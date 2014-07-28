@@ -1,4 +1,4 @@
-" Associate filetype ".zy" with mode "zeshy". Unfortunately, neither of the
+" Associate filetype ".zsy" with mode "zeshy". Unfortunately, neither of the
 " following suffice:
 "
 " * "setfiletype", setting the current filetype only if such filetype has not
@@ -13,7 +13,7 @@
 " Hence, we adopt a solution inspired by "ftplugin/ruby.vim", setting the local
 " filetype only if *NOT* already set to "zeshy". (Yes, this should probably be
 " a Vim builtin.)
-autocmd BufNewFile,BufRead *.zy
+autocmd BufNewFile,BufRead *.zsy
   \ if &filetype !=# "zeshy" |
   \     setlocal filetype=zeshy |
   \ endif

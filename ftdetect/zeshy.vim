@@ -1,3 +1,13 @@
+" Vim filetype detection file
+" Language:       zeshy
+" Maintainer:     Cecil Curry <leycec@gmail.com>
+" Latest Change:  2014-11-21
+
+" --------------------( LICENSE                            )--------------------
+" Copyright 2014-2015 by Cecil Curry.
+" See "LICENSE" for additional details.
+
+" ....................{ DETECTION                          }....................
 " Associate filetype ".zy" with mode "zeshy". Unfortunately, neither of the
 " following suffice:
 "
@@ -17,3 +27,5 @@ autocmd BufNewFile,BufRead *.zy
   \ if &filetype !=# "zeshy" |
   \     setlocal filetype=zeshy |
   \ endif
+
+" --------------------( WASTELANDS                         )--------------------

@@ -29,33 +29,52 @@ set cpo&vim
 
 " ....................{ OPTIONS ~ comment                  }....................
 " Comment types, formatted as a ","-delimited list of "{flags}:{string}"-
-" formatted substrings defining such comment types, where:
+" formatted substrings defining these comment types, where:
 "
-" * "{flags}" is zero or more characters signifying such comment type options.
-" * "{string}" is one or more characters signifying such comment type's leader
+" * "{flags}" is zero or more characters signifying this comment type's options.
+" * "{string}" is one or more characters signifying this comment type's leader
 "   (i.e., literal substring prefixing all comments of such type).
-setlocal comments=:#
+setlocal comments=:#,fb:-
 
-" Folding-specific comment template, replacing "%s" by such comment's text.
+" Folding-specific comment template, replacing "%s" by this comment's text.
 setlocal commentstring=#%s
 
-" Text formatting options. append and shift such list with "+=" and "-=" rather
-" than overwriting such list (and hence sane Vim defaults) with "=". See
-" ":h fo-table". Dismantled, this is:
+" Text formatting options. For safety, append and shift this list with "+=" and
+" "-=" rather than overwriting this list (and hence sane Vim defaults) with "=".
+" See ":h fo-table".
 "
-" * "c", autowrapping comments.
+" The following options are enabled by default:
+"
+" * "c", autowrapping all comment line longer than "textwidth" on the first
+"   addition, deletion, or edit of a character in such line with column greater
+"   than "textwidth".
 " * "r", autoinserting comment leaders on <Enter> in Insert mode.
 " * "o", autoinserting comment leaders on <o> and <O> in Normal mode.
 " * "q", autoformatting comments on <gq> in Normal mode.
-" * "n", autoformatting commented numbered lists sanely.
+" * "n", autoformatting commented lists matched by:
+"   * "formatlistpat", a standard Vim regular expression matching all lists in
+"     comments excluding prefixing comment leader. By default, this expression
+"     matches numbered but *NOT* unnumbered lists. A "|"-prefixed regular
+"     alternative matching all unnumbered lists prefixed by a
+"     Markdown-compatible prefix (i.e., "*", "-", or "+" optionally
+"     prefixed by whitespace and mandatorily suffixed by whitespace) is thus
+"     appended to this option's default value. Note that this mostly only
+"     prevents list items from being concatenated together. In particular, this
+"     does *NOT* autoindent the second lines of list items.
 " * "j", removing comment leaders when joining lines.
 " * "m", breaking long lines at multibyte characters (e.g., for Asian languages
 "   in which characters signify words).
 " * "B", *NOT* inserting whitespace between adjacent multibyte characters when
 "   joining lines.
 "
-" Avoid autowrapping code by disabling option "t".
-setlocal formatoptions+=croqnjmB formatoptions-=t
+" The following options are disabled by default:
+"
+" * "l", preventing long lines from being autowrapped in Insert mode.
+" * "t", autowrapping uncommented code as well.
+setlocal
+  \ formatoptions+=cjmnoqrB
+  \ formatoptions-=lt
+  \ formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*\\\|^\\s*[*-+]\\s\\+
 
 " ....................{ MATCHING                           }....................
 "FIXME: Augment with zeshy-specific identifiers (e.g., ":if", ":case").

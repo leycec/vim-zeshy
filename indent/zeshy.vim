@@ -1,7 +1,11 @@
 " Vim syntax file
 " Language:       zeshy
 " Maintainer:     Cecil Curry <leycec@gmail.com>
-" Latest Change:  2014-08-01
+" Latest Change:  2017-10-07
+
+" --------------------( LICENSE                            )--------------------
+" Copyright 2014-2017 by Cecil Curry.
+" See "LICENSE" for additional details.
 
 " ....................{ PREAMBLE                           }....................
 " If such plugin has already been loaded for the current buffer, return. Since

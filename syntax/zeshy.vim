@@ -1,16 +1,20 @@
 " Vim syntax file
 " Language:       zeshy
 " Maintainer:     Cecil Curry <leycec@gmail.com>
-" Latest Change:  2014-08-01
+" Latest Change:  2017-10-07
 " Filenames:      *.zeshy
 
-"FIXME: vim's official shell script syntax highlighting (i.e., "syntax/sh.vim")
+"FIXME: Vim's official shell script syntax highlighting (i.e., "syntax/sh.vim")
 "is much more reliable, extensive, documented, frequently updated, and
 "well-structured than vim's official zsh syntax highlighting. Consequently, we
 "probably want to cease depending on the latter and instead rewrite this
 "script in a manner strongly inspired by the former. (Let's drop those things
 "we don't particularly care about, of course: backwards compatibility with
 "older vim versions, folding support, custom mode-specific global variables).
+
+" --------------------( LICENSE                            )--------------------
+" Copyright 2014-2017 by Cecil Curry.
+" See "LICENSE" for additional details.
 
 " ....................{ PREAMBLE                           }....................
 " If syntax highlighting has already been loaded for the current buffer,

@@ -27,6 +27,7 @@ endif
 " Since the core of zeshy syntax is zsh syntax, implement the former as an
 " extension of the latter.
 runtime! syntax/zsh.vim
+" runtime! syntax/sh.vim
 
 " ....................{ SYNCHRONIZATION                    }....................
 " Synchronize zeshy syntax highlighting by parsing from the beginning of the
@@ -46,7 +47,6 @@ syn region zyMathTest matchgroup=zyMathDelimiter contains=@zyMath
 " ....................{ HIGHLIGHT GROUPS                   }....................
 " Map all mode-specific match groups defined above to mode-agnostic highlight
 " groups defined by vim.
-
 hi def link zyMathDelimiter Delimiter
 
 " ....................{ POSTAMBLE                          }....................

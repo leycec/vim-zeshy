@@ -73,7 +73,8 @@ setlocal commentstring=#%s
 " * "t", autowrapping uncommented code as well.
 setlocal
   \ formatoptions+=cjmnoqrB
-  \ formatoptions-=lt
+  \ formatoptions-=l
+  \ formatoptions-=t
   \ formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*\\\|^\\s*[*-+]\\s\\+
 
 " ....................{ MATCHING                           }....................
